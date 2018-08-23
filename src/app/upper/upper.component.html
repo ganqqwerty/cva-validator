@@ -1,0 +1,15 @@
+<form action=""
+      [formGroup]="form"
+      class="main-form">
+  <h4>Upper form</h4>
+  <label>First name</label>
+  <input type="text"
+         formControlName="firstName">
+  <app-address formControlName="address"></app-address>
+  <p>Form:</p>
+  <pre>{{form.value|json}}</pre>
+  <p>Validity</p>
+  <pre>{{form.valid|json}}</pre>
+
+
+</form>
