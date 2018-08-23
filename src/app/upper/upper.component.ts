@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-upper',
@@ -9,15 +9,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UpperComponent implements OnInit {
 
   form: FormGroup;
+  get addresses () {
+    return this.form.controls.addresses as FormArray;
+  }
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       firstName: this.fb.control('', Validators.required),
-      address: this.fb.control('')
+      addresses: this.fb.array([])
     });
   }
 
   ngOnInit() {
+  }
+
+  addAddress() {
+    this.addresses.push(this.fb.control(''));
   }
 
 }

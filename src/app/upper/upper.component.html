@@ -5,11 +5,17 @@
   <label>First name</label>
   <input type="text"
          formControlName="firstName">
-  <app-address formControlName="address"></app-address>
+  <div formArrayName="addresses">
+    <app-address
+      *ngFor="let address of addresses.controls; let i=index"
+      [formControlName]="i">
+    </app-address>
+  </div>
+  <button (click)="addAddress()">Add another address</button>
+
+
   <p>Form:</p>
   <pre>{{form.value|json}}</pre>
   <p>Validity</p>
   <pre>{{form.valid|json}}</pre>
-
-
 </form>
