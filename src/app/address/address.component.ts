@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { SubForm } from '../sub-form';
-import { FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -9,6 +9,11 @@ import { FormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AddressComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
       useExisting: forwardRef(() => AddressComponent),
       multi: true
     }
