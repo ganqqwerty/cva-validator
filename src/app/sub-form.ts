@@ -17,14 +17,12 @@ export abstract class SubForm implements ControlValueAccessor, Validator {
 
   form: FormGroup;
 
-  public onTouched(): void {
-  }
+  public onTouched: () => { };
 
   public writeValue(value: any): void {
     if (value) {
       // todo think if we should use setValue or patchValue
-      this.form.patchValue(value, {emitEvent: false});
-      this.onTouched();
+      this.form.patchValue(value);
     }
   }
 
