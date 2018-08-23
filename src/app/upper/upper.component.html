@@ -5,6 +5,7 @@
   <label>First name</label>
   <input type="text"
          formControlName="firstName">
+  <div *ngIf="form.controls['addresses'].valid">privet</div>
   <div formArrayName="addresses">
     <app-address
       *ngFor="let address of addresses.controls; let i=index"
